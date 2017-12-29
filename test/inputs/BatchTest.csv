@@ -1,0 +1,38 @@
+# Conversion Batch Test,
+#---------------------------------------------,
+# Header Information,
+"geodeticSeparator:,",
+lonRange:0,
+leadingZeros:false,
+signHemisphere:0,
+geodeiticUnits:2,
+sourceDatum:WGE,
+sourceCoordinateType:10,
+sourceHeightType:0,
+targetDatum:WGE,
+targetCoordinateType:34,
+targetHeightType:0,
+targetZone:false,
+END OF HEADER,
+,
+85,-60
+85,-50
+85,-40
+85,-30
+85,-20
+85,-10
+85,0
+85,10
+85,20
+85,30
+85,40
+85,50
+85,60
+75,-60
+75,-50
+75,-40
+75,-30
+75,-20
+75,-10
+75,0
+75,10

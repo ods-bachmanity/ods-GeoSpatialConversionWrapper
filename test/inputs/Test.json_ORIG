@@ -1,0 +1,18 @@
+{
+  "geodeticSeparator": ",",
+  "lonRange": "-180,180",
+  "leadingZeros": "false",
+  "signHemisphere": "0",
+  "geodeiticUnits": "2",
+  "source": {
+    "sourceDatum": "WGE",
+    "sourceCoordinateType": "GEODETIC",
+    "sourceHeightType": "0"
+  },
+  "target": {
+    "targetDatum": "WGE",
+    "targetCoordinateType": "UTM",
+    "targetHeightType": "0"
+  },
+  "Coordinates": "-98.45339,30.21344 -100.10323, 31.33452"
+}

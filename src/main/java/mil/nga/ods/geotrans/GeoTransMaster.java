@@ -24,6 +24,7 @@ import org.codehaus.jettison.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class GeoTransMaster {
 
     private static final Logger log = LoggerFactory.getLogger(GeoTransMaster.class.getName());
@@ -38,13 +39,13 @@ public class GeoTransMaster {
 
         log.debug("Native libraries loaded.");
     }
-
+    
     public String doBulkConversion(InputStream fileInput) throws Exception {
         log.debug("Entering doBulkConversion()");
 
         return (String) assembleAndExecuteConversion(new GeoTransUtility(fileInput), true);
     }
-
+    
     public JSONObject doConversion(String jsonInput) throws Exception {
         log.debug("Entering doConversion()");
 
@@ -83,7 +84,7 @@ public class GeoTransMaster {
         log.debug("Leaving assembleAndExecuteConversion()");
         return gtUtility.buildResponse(results, isBulk);
     }
-
+    
     public JSONObject doCoordinateTranslation(String jsonInput) throws CoordinateConversionException, JSONException {
         log.debug("Entering doCoordinateTranslation()");
 
@@ -95,7 +96,7 @@ public class GeoTransMaster {
         log.debug("Leaving doCoordinateTranslation()");
         return jsonToReturn;
     }
-
+    
     public JSONObject retrieveAvailableDatums() throws Exception {
         CoordinateSystemParameters tmp = new GeodeticParameters( CoordinateType.GEODETIC, HeightType.NO_HEIGHT );
         JNICoordinateConversionService jniCoordinateConversionService = new JNICoordinateConversionService(GeoTransConstants.WGS84_DATUM_CODE, tmp,
@@ -116,7 +117,7 @@ public class GeoTransMaster {
 
         return new JSONObject().put("availableDatums",  availableDatums);
     }
-
+    
     public JSONObject retrieveAvailableEllipsoids() throws Exception {
         CoordinateSystemParameters tmp = new GeodeticParameters( CoordinateType.GEODETIC, HeightType.NO_HEIGHT );
         JNICoordinateConversionService jniCoordinateConversionService = new JNICoordinateConversionService(GeoTransConstants.WGS84_DATUM_CODE, tmp,

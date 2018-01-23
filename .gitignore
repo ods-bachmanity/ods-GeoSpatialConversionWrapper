@@ -1,0 +1,11 @@
+/build
+/bin
+.project
+.classpath
+.settings
+.gradle
+.vscode
+.class
+.jws
+.jpr
+.dll

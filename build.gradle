@@ -19,7 +19,7 @@ repositories {
      mavenCentral()
      
      flatDir {
-     	dirs 'C:\\dev\\GEOTRANS'
+     	dirs 'C:\\GEOTRANS'
      }
 }
 

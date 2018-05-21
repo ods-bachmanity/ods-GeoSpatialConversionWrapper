@@ -47,6 +47,7 @@ import java.util.Map;
 
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.codehaus.jettison.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -647,5 +648,502 @@ public class GeoTransUtility {
 
         log.debug("Leaving retrieveAccuracy()");
         return coordAccuracy.getAccuracy();
+    }
+
+    /**
+     * Method for generating JSON object that contains an array of the various
+     * required source coordinate input fields based on the coordinate type of
+     * the source coordinate system.  This is to assist in helping the caller
+     * build the proper JSON structure to pass in when calling the conversion
+     * service.
+     * 
+     * @return JSONObject containing array of the requiredSourceCoordinateFieldsByType.
+     * @throws JSONException
+     * @since ODS sprint 7.3
+     */
+    static public JSONObject buildRequiredSourceCoordinateFieldsByTypeJSON() throws Exception {
+        // Create JSON array object that contains all the required source coordinate input fields by coordinate type.
+
+        JSONObject currentSourceCoordinatePatternByType;
+        JSONObject currentSourceCoordinatePattern;  // Represents object representing required fields fields for source coordinate values.
+        JSONArray currentSourceCoordinateArray;  // Represents array of one or more source coordinate elements.
+        JSONObject currentSourceCoordinateElement;  // Represents fields of one source coordinate element.
+        JSONArray requiredSourceCoordinateFieldsByType = new JSONArray();  // Holds all of the object patterns for each unique source coordinate pattern type.
+
+
+        // ====================================
+        // *** Source coordinate pattern 01 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "0,15");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceCentralMeridian", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseEasting", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseNorthing", "<double>");
+        currentSourceCoordinatePattern.put("sourceOriginLatitude", "<double>");
+        currentSourceCoordinatePattern.put("source1stStandardParallel", "<double>");
+        currentSourceCoordinatePattern.put("source2ndStandardParallel", "<double>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 02 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "1,2,4,5,13,23,25,28,30");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceCentralMeridian", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseEasting", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseNorthing", "<double>");
+        currentSourceCoordinatePattern.put("sourceOriginLatitude", "<double>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 03 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "3,11,12,19,35,38");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceCoordinateString", "<string>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 04 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "6,7,20,21,29,36");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceCentralMeridian", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseEasting", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseNorthing", "<double>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 05 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "8,17,26");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceCentralMeridian", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseEasting", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseNorthing", "<double>");
+        currentSourceCoordinatePattern.put("sourceStandardParallel", "<double>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 06 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "9");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceX", "<double>");
+        currentSourceCoordinateElement.put("sourceY", "<double>");
+        currentSourceCoordinateElement.put("sourceZ", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 07 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "10");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceHeightType", "<int>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceLongitude", "<double>");
+        currentSourceCoordinateElement.put("sourceLatitude", "<double>");
+        currentSourceCoordinateElement.put("sourceHeight", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 08 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "14,31,32");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceCentralMeridian", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseEasting", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseNorthing", "<double>");
+        currentSourceCoordinatePattern.put("sourceOriginLatitude", "<double>");
+        currentSourceCoordinatePattern.put("sourceScaleFactor", "<double>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 09 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "16");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceOriginLatitude", "<double>");
+        currentSourceCoordinatePattern.put("sourceOriginLongitude", "<double>");
+        currentSourceCoordinatePattern.put("sourceOriginHeight", "<double>");
+        currentSourceCoordinatePattern.put("sourceOrientation", "<double>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceX", "<double>");
+        currentSourceCoordinateElement.put("sourceY", "<double>");
+        currentSourceCoordinateElement.put("sourceZ", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 10 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "18");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceCentralMeridian", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseEasting", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseNorthing", "<double>");
+        currentSourceCoordinatePattern.put("sourceScaleFactor", "<double>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 11 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "22");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 12 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "24");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceFalseEasting", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseNorthing", "<double>");
+        currentSourceCoordinatePattern.put("sourceOriginLatitude", "<double>");
+        currentSourceCoordinatePattern.put("sourceScaleFactor", "<double>");
+        currentSourceCoordinatePattern.put("sourceLongitude1", "<double>");
+        currentSourceCoordinatePattern.put("sourceLatitude1", "<double>");
+        currentSourceCoordinatePattern.put("sourceLongitude2", "<double>");
+        currentSourceCoordinatePattern.put("sourceLatitude2", "<double>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 13 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "27");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceCentralMeridian", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseEasting", "<double>");
+        currentSourceCoordinatePattern.put("sourceFalseNorthing", "<double>");
+        currentSourceCoordinatePattern.put("sourceScaleFactor", "<double>");
+        currentSourceCoordinatePattern.put("sourceHemisphere", "<char>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 14 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "33");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+        currentSourceCoordinateElement.put("sourceHemisphere", "<char>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ====================================
+        // *** Source coordinate pattern 15 ***
+        // ====================================
+        currentSourceCoordinatePatternByType = new JSONObject();
+        currentSourceCoordinatePatternByType.put("coordinateTypes", "34");
+
+        // Create requiredSourceCoordinateFields JSON object.
+        currentSourceCoordinatePattern = new JSONObject();
+        currentSourceCoordinatePattern.put("sourceZone", "<boolean>");
+
+        // Create source coordinate element.
+        currentSourceCoordinateElement = new JSONObject();
+        currentSourceCoordinateElement.put("sourceEasting", "<double>");
+        currentSourceCoordinateElement.put("sourceNorthing", "<double>");
+        currentSourceCoordinateElement.put("sourceHemisphere", "<char>");
+        currentSourceCoordinateElement.put("sourceZoneData", "<int>");
+
+        // Put source coordinate element into array.
+        currentSourceCoordinateArray = new JSONArray();
+        currentSourceCoordinateArray.put(currentSourceCoordinateElement);
+
+        // Put source coordinate field array into pattern.
+        currentSourceCoordinatePattern.put("sourceCoordinates", currentSourceCoordinateArray);
+
+        // Put requiredSourceCoordinateFields Pattern into ByType JSON object.
+        currentSourceCoordinatePatternByType.put("requiredSourceCoordinateFields", currentSourceCoordinatePattern);
+
+        // Put entire Pattern in outer array.
+        requiredSourceCoordinateFieldsByType.put(currentSourceCoordinatePatternByType);
+
+
+        // ==================================================
+        // Return final object structure that has been built.
+        // ==================================================
+        return new JSONObject().put("requiredSourceCoordinateFieldsByType", requiredSourceCoordinateFieldsByType);
     }
 }

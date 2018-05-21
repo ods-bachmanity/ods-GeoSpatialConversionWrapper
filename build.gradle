@@ -6,7 +6,7 @@ apply plugin: 'jacoco'
 sourceCompatibility=1.7
 
 //repositories {
-//     maven {
+//    maven {
 //        url "https://nexus.gs.mil/nexus/content/groups/ods"
 //        credentials {
 //            username "gradle"
@@ -16,11 +16,11 @@ sourceCompatibility=1.7
 //}
 
 repositories {
-     mavenCentral()
-     
-     flatDir {
-     	dirs 'C:\\GEOTRANS'
-     }
+    mavenCentral()
+    
+    flatDir {
+        dirs 'C:\\dev\\GEOTRANS'
+    }
 }
 
 

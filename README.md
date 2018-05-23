@@ -39,7 +39,8 @@ Creates a java wrapper which interfaces with native GeoTrans libraries to provid
 | retrieveAvailableDatums() | void | Returns JSON containing the available datums |
 | doConversion() | String JSON | Returns JSON object containing the converted coordinates |
 | doCoordinateTranslation() | String JSON | Returns JSON object containing the translated coordinates |
-| retrieveAvailableEllipsoids() | void | Returns JSON containing the available ellipsoids |
+| retrieveAvailableEllipsoids() | void | Returns JSON object containing the available ellipsoids |
+| retrieveSourceCoordinateInputByType() | void | Returns JSON object containing the required source coordinate fields by coordinate type. |
 
 ## development notes
 - Git is rooted at the same level as this README.md file. To perform git commands properly against this repo you should execute those commands from that level e.g. `user/path/geoSpatialConversionWrapper/:-> git pull`

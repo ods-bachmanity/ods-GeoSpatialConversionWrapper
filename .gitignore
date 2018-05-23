@@ -9,3 +9,5 @@
 .jws
 .jpr
 .dll
+setLocalEnvironmentVariables.txt
+ExampleSourceCoordinateFieldsByType.json
